@@ -47,12 +47,6 @@ experimental_enabled = os.getenv("ARGOS_EXPERIMENTAL_ENABLED") in TRUE_VALUES
 
 stanza_available = os.getenv("ARGOS_STANZA_AVAILABLE") in (TRUE_VALUES + [None])
 
-def get_packages_path():
-    return legacy_package_data_dir
-
-
-
-
 class ModelProvider(Enum):
     OPENNMT = 0
     LIBRETRANSLATE = 1
@@ -105,3 +99,15 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 # Supported values: cpu and cuda
 device = os.environ.get("ARGOS_DEVICE_TYPE", "cpu")
+
+
+# --------  Fork specific settings  --------
+def get_packages_folder_path():
+    return legacy_package_data_dir
+
+def get_path_of_packages():
+    for path in package_dirs:
+        if path.exists():
+            pritn(f"Path of package: {path}")
+            return path
+
