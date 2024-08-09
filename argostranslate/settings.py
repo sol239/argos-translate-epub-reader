@@ -48,7 +48,10 @@ experimental_enabled = os.getenv("ARGOS_EXPERIMENTAL_ENABLED") in TRUE_VALUES
 stanza_available = os.getenv("ARGOS_STANZA_AVAILABLE") in (TRUE_VALUES + [None])
 
 def get_packages_path():
-    return data_dir
+    return legacy_package_data_dir
+
+
+
 
 class ModelProvider(Enum):
     OPENNMT = 0
