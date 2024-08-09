@@ -98,7 +98,7 @@ about_text = (
 os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 # Supported values: cpu and cuda
-device = os.environ.get("ARGOS_DEVICE_TYPE", "cpu")
+device = os.environ.get("ARGOS_DEVICE_TYPE", "cuda")
 
 
 # --------  Fork specific settings  --------
@@ -106,8 +106,8 @@ def get_packages_folder_path():
     return legacy_package_data_dir
 
 def get_path_of_packages():
-    for path in package_dirs:
-        if path.exists():
-            pritn(f"Path of package: {path}")
-            return path
-
+    # prints dirs inside legacy_package_data_dir as string
+    _packages = [x for x in legacy_package_data_dir.iterdir() if x.is_dir()]
+    for i in _packages:
+        print(i)
+    return _packages
